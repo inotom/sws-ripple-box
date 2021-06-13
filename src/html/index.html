@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>sws-ripple-box demo</title>
+<style>
+body {
+  color: #fff;
+  background-color: #000;
+}
+
+a {
+  color: currentColor;
+}
+
+.demo-container {
+  width: 200px;
+  height: 200px;
+}
+
+.demo-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+  background-color: #900;
+}
+
+.demo-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: #090;
+}
+
+.sws-ripple-box-demo-1 {
+  --sws-ripple-box-clip-path: circle(50%);
+}
+
+.sws-ripple-box-demo-2 {
+  --sws-ripple-box-color: rgba(0, 255, 0, 0.5);
+  --sws-ripple-box-border-radius: 10px;
+  --sws-ripple-box-scale-up-size: 1.5;
+  --sws-ripple-box-shadow-blur-radius: 10px;
+  --sws-ripple-box-shadow-spread-radius: 2.5px;
+  --sws-ripple-box-animation-duration: 1s;
+  --sws-ripple-box-animation-delay: .5s;
+  --sws-ripple-box-animation-count: 1;
+  --sws-ripple-box-animation-timing-function: ease-out;
+}
+</style>
+</head>
+<body>
+
+  <div class="l-container">
+
+    <h1>sws-ripple-box demo</h1>
+
+      <div class="demo-container">
+        <sws-ripple-box class="sws-ripple-box-demo-1">
+          <div class="demo-1">
+            Hello World!
+          </div>
+        </sws-ripple-box>
+      </div>
+
+      <div class="demo-container">
+        <sws-ripple-box class="sws-ripple-box-demo-2">
+          <div class="demo-2">
+            Hello World!
+          </div>
+        </sws-ripple-box>
+      </div>
+  </div>
+
+</body>
+</html>

@@ -6,7 +6,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import html2 from 'rollup-plugin-html2';
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
-//import buble from '@rollup/plugin-buble';
 import { terser } from 'rollup-plugin-terser';
 
 import camelCase from 'lodash.camelcase';
@@ -30,13 +29,6 @@ const plugins = [
 ];
 let pluginsBrowser = [
   ...plugins,
-  //buble({
-  //  transforms: {
-  //    templateString: true,
-  //    //forOf: false,
-  //    dangerousForOf: true,
-  //  },
-  //}),
   html2({ template: 'src/html/index.html' }),
 ];
 

@@ -55,6 +55,23 @@ sws-ripple-box {
 | `--sws-ripple-box-clip-path`                 | Limit the range of mouse events | `none`                     |
 
 
+## Options
+
+```html
+<sws-ripple-box
+  mode="static"
+>
+  <div>
+    Hello World
+  </div>
+</sws-ripple-box>
+```
+
+| option name | content                                                           | defaults |
+|:------------|:------------------------------------------------------------------|:---------|
+| `mode`      | If `static` is set, it will be played automatically and infinite. | ``       |
+
+
 ## License
 
 MIT

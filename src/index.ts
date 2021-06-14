@@ -77,6 +77,11 @@ class SwsRippleBox extends LitElement {
     }
   `;
 
+  MODE_STATIC = 'static';
+
+  @property({ type: String })
+  mode = '';
+
   private isTouching = false;
 
   private elRippleBox: HTMLDivElement | null | undefined;
@@ -109,6 +114,11 @@ class SwsRippleBox extends LitElement {
   firstUpdated() {
     this.elRippleBox = this.shadowRoot?.querySelector<HTMLDivElement>('.ripple-box');
     this.elRipple2 = this.elRippleBox?.querySelector<HTMLDivElement>('.ripple-box__ripple--2');
+
+    if (this.mode === this.MODE_STATIC) {
+      this.elRippleBox?.setAttribute('is-active', '');
+      this.style.setProperty('--sws-ripple-box-animation-count', 'infinite');
+    }
   }
 
   private _stopAnimation(): void {
@@ -117,6 +127,10 @@ class SwsRippleBox extends LitElement {
   }
 
   private _onMouseOver(e: MouseEvent): void {
+    if (this.mode === this.MODE_STATIC) {
+      return;
+    }
+
     if (this.isTouching) {
       this.isTouching = false;
       return;
@@ -142,6 +156,10 @@ class SwsRippleBox extends LitElement {
   }
 
   private _onMouseOut(e: MouseEvent): void {
+    if (this.mode === this.MODE_STATIC) {
+      return;
+    }
+
     if (!this.elRippleBox?.hasAttribute('is-active')) {
       return;
     }
@@ -154,6 +172,10 @@ class SwsRippleBox extends LitElement {
   }
 
   private _onTouchStart(e: TouchEvent): void {
+    if (this.mode === this.MODE_STATIC) {
+      return;
+    }
+
     this.isTouching = true;
 
     if (this.elRippleBox?.hasAttribute('is-active')) {

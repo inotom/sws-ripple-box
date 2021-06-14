@@ -14,9 +14,20 @@ a {
   color: currentColor;
 }
 
+.l-container {
+  width: 90%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .demo-container {
   width: 200px;
   height: 200px;
+}
+
+.demo-container + .demo-container {
+  margin-top: 50px;
 }
 
 .demo-1 {
@@ -37,6 +48,17 @@ a {
   height: 200px;
   border-radius: 10px;
   background-color: #090;
+}
+
+.demo-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+  color: #000;
+  background-color: #fff;
 }
 
 .sws-ripple-box-demo-1 {
@@ -73,6 +95,14 @@ a {
       <div class="demo-container">
         <sws-ripple-box class="sws-ripple-box-demo-2">
           <div class="demo-2">
+            Hello World!
+          </div>
+        </sws-ripple-box>
+      </div>
+
+      <div class="demo-container">
+        <sws-ripple-box mode="static">
+          <div class="demo-3">
             Hello World!
           </div>
         </sws-ripple-box>

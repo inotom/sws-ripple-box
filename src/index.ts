@@ -88,6 +88,8 @@ class SwsRippleBox extends LitElement {
 
   private elRipple2: HTMLDivElement | null | undefined;
 
+  private animationCountProp: String | null | undefined;
+
   constructor() {
     super();
     this.elRippleBox = null;
@@ -114,11 +116,18 @@ class SwsRippleBox extends LitElement {
   firstUpdated() {
     this.elRippleBox = this.shadowRoot?.querySelector<HTMLDivElement>('.ripple-box');
     this.elRipple2 = this.elRippleBox?.querySelector<HTMLDivElement>('.ripple-box__ripple--2');
+    this.animationCountProp = getComputedStyle(this.elRippleBox).getPropertyValue(
+      '--sws-ripple-box-animation-count'
+    );
 
     if (this.mode === this.MODE_STATIC) {
       this.elRippleBox?.setAttribute('is-active', '');
       this.style.setProperty('--sws-ripple-box-animation-count', 'infinite');
     }
+
+    this.elRipple2?.addEventListener('animationend', () => {
+      this._stopAnimation();
+    });
   }
 
   private _stopAnimation(): void {
@@ -143,16 +152,6 @@ class SwsRippleBox extends LitElement {
     }
 
     this.elRippleBox?.setAttribute('is-active', '');
-
-    if (
-      this.elRippleBox &&
-      getComputedStyle(this.elRippleBox).getPropertyValue('--sws-ripple-box-animation-count') !==
-        'infinite'
-    ) {
-      this.elRipple2?.addEventListener('animationend', () => {
-        this._stopAnimation();
-      });
-    }
   }
 
   private _onMouseOut(e: MouseEvent): void {
@@ -165,10 +164,6 @@ class SwsRippleBox extends LitElement {
     }
 
     this.style.setProperty('--sws-ripple-box-animation-count', '1');
-
-    this.elRipple2?.addEventListener('animationend', () => {
-      this._stopAnimation();
-    });
   }
 
   private _onTouchStart(e: TouchEvent): void {
@@ -185,10 +180,6 @@ class SwsRippleBox extends LitElement {
     this.style.setProperty('--sws-ripple-box-animation-count', '1');
 
     this.elRippleBox?.setAttribute('is-active', '');
-
-    this.elRipple2?.addEventListener('animationend', () => {
-      this._stopAnimation();
-    });
   }
 }
 

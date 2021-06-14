@@ -116,9 +116,9 @@ class SwsRippleBox extends LitElement {
   firstUpdated() {
     this.elRippleBox = this.shadowRoot?.querySelector<HTMLDivElement>('.ripple-box');
     this.elRipple2 = this.elRippleBox?.querySelector<HTMLDivElement>('.ripple-box__ripple--2');
-    this.animationCountProp = getComputedStyle(this.elRippleBox).getPropertyValue(
-      '--sws-ripple-box-animation-count'
-    );
+    this.animationCountProp = this.elRippleBox
+      ? getComputedStyle(this.elRippleBox).getPropertyValue('--sws-ripple-box-animation-count')
+      : 'infinite';
 
     if (this.mode === this.MODE_STATIC) {
       this.elRippleBox?.setAttribute('is-active', '');
